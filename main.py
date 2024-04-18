@@ -3,9 +3,9 @@ from src.restaurants import app
 
 PARSER_DESCRIPTION = "Retrieve a number of restaurants data from an UK postcode"
 DEFAULT_LIMIT = 10
-PARSER_LIMIT_HELP = "Set the limit of restaurants to be retrieved"
+PARSER_LIMIT_HELP = "set the limit of restaurants to be retrieved"
 DEFAULT_POSTCODE = "EC4M7RF"
-PARSER_POSTCODE_HELP = "Set an UK postcode"
+PARSER_POSTCODE_HELP = "set an UK postcode"
 
 def main():
     # Setup parser and get arguments

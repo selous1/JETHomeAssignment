@@ -15,3 +15,6 @@ python3 -m pip install -r requirements.txt
 ## Run
 
 python main.py
+
+
+python tests/tests.py

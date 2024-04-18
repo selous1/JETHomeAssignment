@@ -3,7 +3,7 @@ from utils import utils
 
 URL = "https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/"
 TABLE_HEADERS = ["N","Name","Cuisines","Rating","Address"]
-TABLE_FLOATFMT = ".1f"
+TABLE_FLOAT = ".1f"
 TABLE_TYPE = "restaurants"
 
 def get_restaurants_data(limit: int, postcode: str) -> None:
@@ -14,8 +14,7 @@ def get_restaurants_data(limit: int, postcode: str) -> None:
         data = json.loads(response.read())
 
         # Verify arguments
-        number_of_restaurants = data["metaData"]["resultCount"]
-        if not valid_arguments(limit, postcode, number_of_restaurants):
+        if not valid_arguments(limit, postcode, data):
             return
 
         restaurants_data = []
@@ -30,7 +29,7 @@ def get_restaurants_data(limit: int, postcode: str) -> None:
             restaurants_data.append(restaurant_entry)
 
         # Print output table
-        utils.print_table_data(restaurants_data, limit, postcode, city, TABLE_HEADERS, TABLE_FLOATFMT, TABLE_TYPE)
+        utils.print_table_data(restaurants_data, limit, postcode, city, TABLE_HEADERS, TABLE_FLOAT, TABLE_TYPE)
         
     except Exception as e:
         print(f"Failed to retrieve restaurants data: {e}")
@@ -38,7 +37,8 @@ def get_restaurants_data(limit: int, postcode: str) -> None:
 
     return
 
-def valid_arguments(limit, postcode, number_of_restaurants):
+def valid_arguments(limit, postcode, data) -> bool:
+    number_of_restaurants = data["metaData"]["resultCount"]
     if limit == 0:
         print(f"Failed to retrieve restaurants data: Limit is 0. Please insert a valid limit.")
         return False
@@ -51,7 +51,7 @@ def valid_arguments(limit, postcode, number_of_restaurants):
 
     return True
 
-def get_restaurant_data(restaurant: dict) -> None:
+def get_restaurant_data(restaurant: dict) -> list:
     try:
         name = restaurant["name"]
         cuisines = utils.list_to_sorted_string(restaurant["cuisines"], "name", ", ")
@@ -62,4 +62,4 @@ def get_restaurant_data(restaurant: dict) -> None:
 
     except Exception as e:
         print(f"Failed to retrieve restaurant data: {e}")
-        return
+        return []
