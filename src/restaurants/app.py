@@ -14,9 +14,11 @@ def get_restaurants_data(limit: int, postcode: str) -> None:
         data = json.loads(response.read())
 
         # Verify arguments
-        if not valid_arguments(limit, postcode, data):
+        number_of_restaurants = data["metaData"]["resultCount"]
+        if not valid_arguments(limit, postcode, number_of_restaurants):
             return
-
+        
+        limit = min(limit, number_of_restaurants)
         restaurants_data = []
         restaurants = data["restaurants"]
         for i in range(limit):
@@ -37,16 +39,12 @@ def get_restaurants_data(limit: int, postcode: str) -> None:
 
     return
 
-def valid_arguments(limit, postcode, data) -> bool:
-    number_of_restaurants = data["metaData"]["resultCount"]
-    if limit == 0:
-        print(f"Failed to retrieve restaurants data: Limit is 0. Please insert a valid limit.")
+def valid_arguments(limit, postcode, number_of_restaurants) -> bool:
+    if limit <= 0:
+        print(f"Failed to retrieve restaurants data: Please insert a valid limit.")
         return False
     if number_of_restaurants == 0:
         print(f"Failed to retrieve restaurants data: Nonexistent postcode {postcode}. Please insert a valid postcode.")
-        return False
-    if limit > number_of_restaurants:
-        print(f"Failed to retrieve restaurants data: Limit {limit} exceeds the number of restaurants {number_of_restaurants} in the postcode {postcode}.")
         return False
 
     return True

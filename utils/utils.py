@@ -4,8 +4,8 @@ import sys
 
 def print_table_data(table: list, limit: int, postcode: str, city: str, 
                      headers: list = None, floatfmt: str = ".1f", data: str = "restaurants"):
-    if not table:
-        print("No table to print.")
+    if not table or limit == 0:
+        print("No data to print.")
         return
         
     print(f"Data from {limit} {data} from postcode {postcode} in {city}")

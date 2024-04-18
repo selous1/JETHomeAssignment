@@ -5,15 +5,6 @@ from utils.utils import set_stdout, reset_stdout
 
 class TestGetRestaurantData(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-        print("Starting tests for TestGetRestaurantData class...")
-
-    @classmethod
-    def tearDownClass(cls):
-        print("Tests for TestGetRestaurantData completed.")
-        print("----------------------------------")
-
     def setUp(self):
         print("In method", self._testMethodName)
         self.restaurant_data = {
@@ -39,6 +30,6 @@ class TestGetRestaurantData(unittest.TestCase):
         self.assertEqual(get_restaurant_data(self.restaurant_data), expected_output)
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)
 
 

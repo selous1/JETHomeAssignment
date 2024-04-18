@@ -9,15 +9,6 @@ DEFAULT_POSTCODE = "12345"
 
 class TestGetRestaurantsData(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-        print("Starting tests for TestGetRestaurantsData class...")
-
-    @classmethod
-    def tearDownClass(cls):
-        print("Tests for TestGetRestaurantsData completed.")
-        print("----------------------------------")
-
     def setUp(self):
         print("In method", self._testMethodName)
         self.limit = DEFAULT_LIMIT
@@ -44,6 +35,6 @@ class TestGetRestaurantsData(unittest.TestCase):
         self.assertEqual(remove_whitespace(output), remove_whitespace(expected_output))
     
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)
 
 
