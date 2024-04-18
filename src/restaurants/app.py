@@ -1,40 +1,65 @@
 import urllib.request, json
-from tabulate import tabulate
+from utils import utils
 
-POSTCODE = "EC4M7RF"
 URL = "https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/"
-HEADERS = ["N","Name","Cuisines","Rating","Address"]
+TABLE_HEADERS = ["N","Name","Cuisines","Rating","Address"]
+TABLE_FLOATFMT = ".1f"
+TABLE_TYPE = "restaurants"
 
-def get_restaurant_data(limit: int) -> None:
-    request_url = f"{URL}{POSTCODE}"
-    try:        
+def get_restaurants_data(limit: int, postcode: str) -> None:
+    request_url = f"{URL}{postcode}"
+    try:
+        # Get data from API    
         response = urllib.request.urlopen(request_url)
         data = json.loads(response.read())
 
-        table = []
-        restaurants = data["restaurants"]
-        # Get data from each restaurant
-        for idx in range(limit):
-            restaurant = restaurants[idx]
-            name = restaurant["name"]
-            cuisines_data = restaurant["cuisines"]
-            cuisines = ", ".join([cuisine["name"] for cuisine in cuisines_data])
-            rating = "{:.1f}".format(restaurant["rating"]["starRating"])
-            city = restaurant["address"]["city"]
-            first_line = restaurant["address"]["firstLine"]
-            postal_code = restaurant["address"]["postalCode"]
-            address = f"{first_line}, {postal_code}"
-            
-            # Add data from restaurant to table
-            entry = [idx + 1, name, cuisines, rating, address]
-            table.append(entry)
+        # Verify arguments
+        number_of_restaurants = data["metaData"]["resultCount"]
+        if not valid_arguments(limit, postcode, number_of_restaurants):
+            return
 
-        # Print table with restaurants data
-        print(f"Data from {limit} restaurants in {city}")
-        print(tabulate(table, HEADERS, floatfmt=".1f"))
+        restaurants_data = []
+        restaurants = data["restaurants"]
+        for i in range(limit):
+            # Get data from each restaurant
+            restaurant = restaurants[i]
+            name, cuisines, rating, address, city = get_restaurant_data(restaurant)
+       
+            # Add restaurant data to output table
+            restaurant_entry = [i + 1, name, cuisines, rating, address]
+            restaurants_data.append(restaurant_entry)
+
+        # Print output table
+        utils.print_table_data(restaurants_data, limit, postcode, city, TABLE_HEADERS, TABLE_FLOATFMT, TABLE_TYPE)
         
     except Exception as e:
-        print(f"Failed to get restaurants data: {e}")
+        print(f"Failed to retrieve restaurants data: {e}")
         return
 
     return
+
+def valid_arguments(limit, postcode, number_of_restaurants):
+    if limit == 0:
+        print(f"Failed to retrieve restaurants data: Limit is 0. Please insert a valid limit.")
+        return False
+    if number_of_restaurants == 0:
+        print(f"Failed to retrieve restaurants data: Nonexistent postcode {postcode}. Please insert a valid postcode.")
+        return False
+    if limit > number_of_restaurants:
+        print(f"Failed to retrieve restaurants data: Limit {limit} exceeds the number of restaurants {number_of_restaurants} in the postcode {postcode}.")
+        return False
+
+    return True
+
+def get_restaurant_data(restaurant: dict) -> None:
+    try:
+        name = restaurant["name"]
+        cuisines = utils.list_to_sorted_string(restaurant["cuisines"], "name", ", ")
+        rating = str(restaurant["rating"]["starRating"])
+        city = restaurant["address"]["city"]
+        address = f"""{restaurant["address"]["firstLine"]}, {restaurant["address"]["postalCode"]}"""
+        return [name, cuisines, rating, address, city]
+
+    except Exception as e:
+        print(f"Failed to retrieve restaurant data: {e}")
+        return
