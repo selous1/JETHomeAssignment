@@ -6,7 +6,7 @@ Both the number of restaurants to retrieve and postcode can be customized as nee
 
 ## Table of Contents
 
-- [Assumptions](#assumptions)
+- [General Info](#general-info)
 - [Requirements](#requirements)
 - [Setup](#setup)
 - [Usage](#usage)
@@ -17,16 +17,13 @@ Both the number of restaurants to retrieve and postcode can be customized as nee
 - [Future Improvements](#future-improvements)
 - [Author](#author)
 
-## Assumptions
+## General Info
 
-This application was developed with the following assumptions in mind:
-
-- The [API](https://uk.api.just-eat.io/docs)'s responses are assumed to be correct and valid.
-- The program will still function correctly even if the arguments (limit and postcode) are incorrect or invalid.
+- The [API](https://uk.api.just-eat.io/docs)'s responses are assumed to be correct and valid. 
+- The program will still function correctly even if the arguments (`limit` and `postcode`) are incorrect or invalid.
 - A limit of 0 will be considered invalid, as there must be a positive number of restaurants to retrieve.
 - A nonexistent postcode is defined as a postcode for which the API returns 0 restaurants.
-- Exceptions handling in a general manner to ensure overall error handling.
-
+- Exceptions are handled in a general manner to ensure overall error handling.
 
 ## Requirements
 
@@ -39,7 +36,7 @@ This application was developed with the following assumptions in mind:
 
 To set up the application, follow these steps:
 
-1. Clone the repository to your local machine and switch to its directory: <a name="pookie"></a>
+1. Clone the repository to your local machine and switch to its directory:
 
     ```
     git clone https://github.com/selous1/JETHomeAssignment.git
@@ -79,7 +76,12 @@ Additionally, you can customize the number of restaurants to retrieve and the po
 
 ## Examples
 
-Here are some examples of how to use the application.
+Below are some examples of how to use the application. To run them (and a few others), simply use the command:
+
+```
+python3 scripts/run_examples.py
+```
+
 #### Example 1
 
 ##### Command:
@@ -145,7 +147,7 @@ python3 tests/test_<method_name>.py
 
 ## Future Improvements
 
-- Improve function and method documentation.    
+- Improve code comments and documentation (sphinx, doxygen, etc.).    
 - Implement sorting functionality (names, addresses, ratings, etc) for improved user experience and ease of use.
 - Create a possible differentiation between cuisines (e.g., Pizza, Burgers) and tags (e.g., Low Delivery Fee, Deals).
 - Simplify postcode insertion process for users.

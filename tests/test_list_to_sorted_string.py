@@ -6,13 +6,14 @@ from io import StringIO
 import unittest.mock
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from src.utils.utils import list_to_sorted_string
+from assets.emoji_assets import emojis
 
 class TestListToSortedString(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
         class_name = cls.__name__
-        print(f"Starting {class_name}...")
+        print(f"{emojis['gear']} Starting {class_name}...")
 
     def setUp(self):
         print("In method", self._testMethodName)
@@ -56,7 +57,7 @@ class TestListToSortedString(unittest.TestCase):
     def test_missing_param(self):
         input_list = [{}]
         expected_output = ""
-        msg = "Failed to get sorted string: 'param'"
+        msg = f"{emojis['collisionSymbol']} Failed to get sorted string: 'param'"
         with unittest.mock.patch("sys.stdout", new=StringIO()) as mock_stdout:
             output = list_to_sorted_string(input_list, self.param, self.delimiter)
             stdout = mock_stdout.getvalue().strip()

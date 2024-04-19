@@ -3,13 +3,14 @@ import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from src.utils.utils import remove_whitespace
+from assets.emoji_assets import emojis
 
 class TestRemoveWhitespace(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
         class_name = cls.__name__
-        print(f"Starting {class_name}...")
+        print(f"{emojis['gear']} Starting {class_name}...")
 
     def setUp(self):
         print("In method", self._testMethodName)

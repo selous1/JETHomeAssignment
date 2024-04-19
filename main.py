@@ -1,5 +1,6 @@
 import argparse
 from src.restaurants import app
+from assets.emoji_assets import emojis
 
 PARSER_DESCRIPTION = "Retrieve a number of restaurants data from an UK postcode"
 DEFAULT_LIMIT = 10
@@ -17,6 +18,7 @@ def main():
     args = parser.parse_args()    
     limit = args.limit
     postcode = args.postcode
+    print(f"{emojis['rocket']} Getting data from {limit} restaurants in postcode {postcode}...\n")
 
     # Print restaurants data
     app.get_restaurants_data(limit, postcode)
