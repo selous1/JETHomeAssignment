@@ -11,8 +11,8 @@ def main():
     # Setup parser and get arguments
     indent_formatter = lambda prog: argparse.RawTextHelpFormatter(prog, max_help_position=40)
     parser = argparse.ArgumentParser(formatter_class=indent_formatter, description=PARSER_DESCRIPTION)
-    parser.add_argument('-l', '--limit', type=int, nargs='?', const=DEFAULT_LIMIT, default=DEFAULT_LIMIT, help=PARSER_LIMIT_HELP)
-    parser.add_argument('-p', '--postcode', type=str, nargs='?', const=DEFAULT_POSTCODE, default=DEFAULT_POSTCODE, help=PARSER_POSTCODE_HELP)
+    parser.add_argument("-l", "--limit", type=int, nargs="?", const=DEFAULT_LIMIT, default=DEFAULT_LIMIT, help=PARSER_LIMIT_HELP)
+    parser.add_argument("-p", "--postcode", type=str, nargs="?", const=DEFAULT_POSTCODE, default=DEFAULT_POSTCODE, help=PARSER_POSTCODE_HELP)
     
     args = parser.parse_args()    
     limit = args.limit

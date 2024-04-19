@@ -7,9 +7,9 @@ TABLE_FLOAT = ".1f"
 TABLE_TYPE = "restaurants"
 
 def get_restaurants_data(limit: int, postcode: str) -> None:
-    request_url = f"{URL}{postcode}"
     try:
-        # Get data from API    
+        # Get data from API   
+        request_url = f"{URL}{postcode}" 
         response = urllib.request.urlopen(request_url)
         data = json.loads(response.read())
 
@@ -32,12 +32,11 @@ def get_restaurants_data(limit: int, postcode: str) -> None:
 
         # Print output table
         utils.print_table_data(restaurants_data, limit, postcode, city, TABLE_HEADERS, TABLE_FLOAT, TABLE_TYPE)
-        
+        return
     except Exception as e:
         print(f"Failed to retrieve restaurants data: {e}")
         return
 
-    return
 
 def valid_arguments(limit, postcode, number_of_restaurants) -> bool:
     if limit <= 0:
@@ -57,7 +56,6 @@ def get_restaurant_data(restaurant: dict) -> list:
         city = restaurant["address"]["city"]
         address = f"""{restaurant["address"]["firstLine"]}, {restaurant["address"]["postalCode"]}"""
         return [name, cuisines, rating, address, city]
-
     except Exception as e:
         print(f"Failed to retrieve restaurant data: {e}")
         return []

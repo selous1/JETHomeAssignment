@@ -1,6 +1,6 @@
-# JET Coding Assessment
+# JET Coding Assessment <img src="https://d21buns5ku92am.cloudfront.net/69466/images/397955-JET-Logo-Orange-Primary-Hor-RGB-bc348f-large-1627476396.png" alt="JET Logo" width="250" height="42" style="float: right;">
 
-This project is a command-line application that retrieves information about restaurants partnered with [Just Eat Takeaway](https://www.justeattakeaway.com/) within a given UK postcode. It uses [Just Eat Takeaway's API](https://uk.api.just-eat.io/docs){:target="_blank"} to fetch data such as restaurant name, cuisines, rating, and address, and then displays this information in a table.
+This project is a command-line application that retrieves information about restaurants partnered with [Just Eat Takeaway](https://www.justeattakeaway.com/) within a given UK postcode. It uses [Just Eat Takeaway's API](https://uk.api.just-eat.io/docs) to fetch data such as restaurant name, cuisines, rating, and address, and then displays this information in a table.
 
 Both the number of restaurants to retrieve and postcode can be customized as needed using command-line arguments for better extensibility. Additionally, the cuisines are sorted alphabetically for easier readability.
 
@@ -136,14 +136,22 @@ To run the unit tests for this project, use the following command:
 python3 scripts/run_tests.py
 ```
 
+Alternatively, if you want to run a test class individually, you can do so by running the command:
+
+```
+python3 tests/test_<method_name>.py
+```
+
+
 ## Future Improvements
 
+- Improve function and method documentation.    
 - Implement sorting functionality (names, addresses, ratings, etc) for improved user experience and ease of use.
 - Create a possible differentiation between cuisines (e.g., Pizza, Burgers) and tags (e.g., Low Delivery Fee, Deals).
 - Simplify postcode insertion process for users.
 - Develop a user-friendly web interface to help with the aforementioned points.
 - Test the application in other platforms.
-- Enhance testing by focusing on improving code coverage and implementing mocking techniques.
+- Enhance code coverage and mocking.
 - Standardize messaging and exception handling.
 
 ## Author
