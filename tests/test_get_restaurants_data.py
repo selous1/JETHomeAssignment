@@ -38,7 +38,8 @@ class TestGetRestaurantsData(unittest.TestCase):
         mock_response = HTTPResponse(body=mock_response_data)
         mock_request.return_value = mock_response
         
-        msg = f"""{emojis['sushi']} Data from 1 restaurants with UK postcode 12345 in Test City\n
+        msg = f"""{emojis['checkMark']} Data found! Retrieving data...\n
+                  {emojis['sushi']} Data from 1 restaurants with UK postcode 12345 in Test City\n
                     N  Name             Cuisines          Rating  Address
                   ---  ---------------  --------------  --------  ------------------
                     1  Test Restaurant  Italian, Pizza       4.5  123 Test St, 12345"""
