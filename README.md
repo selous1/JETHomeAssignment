@@ -1,6 +1,6 @@
 # JET Coding Assessment <img src="https://d21buns5ku92am.cloudfront.net/69466/images/397955-JET-Logo-Orange-Primary-Hor-RGB-bc348f-large-1627476396.png" alt="JET Logo" width="250" height="42" align="right">
 
-This project is a command-line application that retrieves information about restaurants partnered with [Just Eat Takeaway](https://www.justeattakeaway.com/) within a given UK postcode. It uses [Just Eat Takeaway's API](https://uk.api.just-eat.io/docs) to fetch data such as restaurant name, cuisines, rating, and address, and then displays this information in a table.
+This project is a command-line application that retrieves information about restaurants in partnership with [Just Eat Takeaway](https://www.justeattakeaway.com/) within a given UK postcode. It uses [Just Eat Takeaway's API](https://uk.api.just-eat.io/docs) to fetch data such as restaurant name, cuisines, rating, and address, and then displays this information in a table.
 
 Both the number of restaurants to retrieve and postcode can be customized as needed using command-line arguments for better extensibility. Additionally, the cuisines are sorted alphabetically for easier readability.
 
