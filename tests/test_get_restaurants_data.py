@@ -2,7 +2,7 @@ import sys, os, unittest, io
 from unittest.mock import patch
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.restaurants.app import get_restaurants_data
-from utils.utils import remove_whitespace
+from src.utils.utils import remove_whitespace
 
 DEFAULT_LIMIT = 1
 DEFAULT_POSTCODE = "12345"
@@ -24,7 +24,7 @@ class TestGetRestaurantsData(unittest.TestCase):
             "rating": {"starRating": 4.5}, "address": {"firstLine": "123 Test St", "postalCode": "12345", "city": "Test City"}}]}')
         mock_urlopen.return_value = mock_response
         
-        expected_output = f"""Data from 1 restaurants from postcode 12345 in Test City
+        expected_output = f"""Data from 1 restaurants with UK postcode 12345 in Test City
                               N  Name             Cuisines          Rating  Address
                             ---  ---------------  --------------  --------  ------------------
                               1  Test Restaurant  Italian, Pizza       4.5  123 Test St, 12345"""

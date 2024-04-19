@@ -8,7 +8,7 @@ def print_table_data(table: list, limit: int, postcode: str, city: str,
         print("No data to print.")
         return
         
-    print(f"Data from {limit} {data} from postcode {postcode} in {city}")
+    print(f"Data from {limit} {data} with UK postcode {postcode} in {city}")
     print(tabulate(table, headers, floatfmt=floatfmt))
 
 def list_to_sorted_string(input: list, param: str, delimiter: str) -> str:

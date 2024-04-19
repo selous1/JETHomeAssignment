@@ -1,5 +1,5 @@
 import urllib.request, json
-from utils import utils
+from src.utils import utils
 
 URL = "https://uk.api.just-eat.io/discovery/uk/restaurants/enriched/bypostcode/"
 TABLE_HEADERS = ["N","Name","Cuisines","Rating","Address"]

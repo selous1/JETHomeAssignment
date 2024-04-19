@@ -1,7 +1,7 @@
 import sys, os, unittest
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.restaurants.app import valid_arguments
-from utils.utils import set_stdout, reset_stdout, get_stdout
+from src.utils.utils import set_stdout, reset_stdout, get_stdout
 
 DEFAULT_LIMIT = 10
 DEFAULT_POSTCODE = "EC4M7RF"

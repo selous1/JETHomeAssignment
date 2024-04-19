@@ -1,7 +1,7 @@
 import sys, os, unittest
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.restaurants.app import get_restaurant_data
-from utils.utils import set_stdout, reset_stdout
+from src.utils.utils import set_stdout, reset_stdout
 
 class TestGetRestaurantData(unittest.TestCase):
 
