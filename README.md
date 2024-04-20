@@ -39,7 +39,7 @@ To set up the application, follow these steps:
 1. Clone the repository to your local machine and switch to its directory:
 
     ```
-    git clone https://github.com/selous1/JETHomeAssignment.git
+    git clone git@github.com:selous1/JETHomeAssignment.git
     cd JETHomeAssignment
     ```
 
@@ -48,11 +48,6 @@ To set up the application, follow these steps:
     python3 -m venv .venv
     source .venv/bin/activate
     python3 -m pip install -r requirements.txt
-    ```
-
-3. Deactivate the virtual environment when finished:
-    ```
-    deactivate
     ```
 
 ## Usage
@@ -73,6 +68,11 @@ Additionally, you can customize the number of restaurants to retrieve and the po
 - `-l <limit>` or `--limit <limit>:` specify the number of restaurants to retrieve. Default: `10`
 - `-p <postcode>` or `--postcode <postcode>:` specify the postcode for restaurant search. Default: `EC4M7RF`
 - `-h` or `--help`: display the help message with information about available command-line options.
+
+3. Deactivate the virtual environment when finished:
+    ```
+    deactivate
+    ```
 
 ## Examples
 

@@ -1,5 +1,4 @@
 import shutil
-import time
 from tabulate import tabulate
 from assets.emoji_assets import emojis
 
