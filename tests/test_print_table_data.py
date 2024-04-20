@@ -28,7 +28,7 @@ class TestPrintTableData(unittest.TestCase):
     # Test case: valid table data
     def test_valid_data(self):
         msg = f"""
-                {emojis['sushi']} Data from 2 restaurants with UK postcode 12345 in Test City\n
+                {emojis['sushi']} Printing data from 2 restaurants with postcode 12345 in Test City...\n
                 N  Name          Cuisines    Rating    Address
                 ---  ------------  ----------  --------  --------------
                 1  Restaurant A  Italian     4.5       123 Test St

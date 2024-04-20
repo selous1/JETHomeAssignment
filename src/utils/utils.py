@@ -1,4 +1,5 @@
 import shutil
+import time
 from tabulate import tabulate
 from assets.emoji_assets import emojis
 
@@ -7,7 +8,7 @@ def print_table_data(table: list, limit: int, postcode: str, city: str,
     if not table:
         print(f"{emojis['sleepingSymbol']} No data to print.")
         return
-    print(f"{emojis['sushi']} Data from {limit} {data} with UK postcode {postcode} in {city}\n")
+    print(f"{emojis['sushi']} Printing data from {limit} {data} with postcode {postcode} in {city}...\n")
     print(tabulate(table, headers, floatfmt=floatfmt))
 
 def list_to_sorted_string(input: list, param: str, delimiter: str) -> str:
@@ -37,3 +38,18 @@ def print_separator() -> None:
     width = min(170, terminal_width)
     separator = "-" * width
     print(separator)
+
+def print_getting_data(limit: int, postcode: str) -> None:
+    print(f"{emojis['rocket']} Getting data from {limit} restaurants in postcode {postcode}...")
+
+def print_data_found() -> None:
+    print(f"{emojis['checkMark']} Data found! Retrieving data...")
+
+def print_insert_valid_limit() -> None:
+    print(f"{emojis['collisionSymbol']} Failed to retrieve restaurants data: Please insert a valid limit.")
+
+def print_insert_valid_postcode(postcode: str) -> None:
+    print(f"{emojis['collisionSymbol']} Failed to retrieve restaurants data: Nonexistent postcode {postcode}. Please insert a valid postcode.")
+
+def print_failed_restaurant_retrieval(e: Exception) -> None:
+    print(f"{emojis['collisionSymbol']} Failed to retrieve restaurant data: {e}")
